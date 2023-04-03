@@ -1,0 +1,89 @@
+/* Estilos para pantallas grandes */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+}
+
+/* nav li:not(:last-child) {
+  margin-right: 20px;
+}
+ */
+
+/* Estilos para pantallas pequeñas */
+@media screen and (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+    cursor: pointer;
+    padding: 10px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+
+  .menu-toggle span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    margin-bottom: 5px;
+    position: relative;
+    transform-origin: center;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .menu-toggle span:nth-child(2) {
+    transform-origin: top;
+  }
+
+  .menu-toggle span:last-child {
+    margin-bottom: 0;
+  }
+
+  nav {
+    display: none;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background-color: #f5f5f5;
+    padding: 20px;
+  }
+
+  nav ul {
+    flex-direction: column;
+  }
+
+  nav li:not(:last-child) {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  nav a {
+    color: #333;
+    font-weight: bold;
+  }
+
+  /* Muestra el menú cuando se hace clic en el botón de hamburguesa */
+  input[type="checkbox"]:checked~nav {
+    display: block;
+  }
+
+  .logo-fr {
+    max-width: 100px;
+    max-height: 40px;
+    width: auto;
+    height: auto;
+    margin-top: -10px;
+    margin-left: 10px;
+  }
+  .input-search{
+    display: none;
+  }
+}
