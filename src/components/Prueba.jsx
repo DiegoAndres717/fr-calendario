@@ -1,55 +1,61 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import Logo from "../img/Logo.png";
-import "../styles/Prueba.css";
+import "../styles/Dias.css";
 
-const Prueba = () => {
-  const [showMenu, setShowMenu] = useState(false);
-  const [searchTerm, setSearchTerm] = useState('');
+const Dias = (props) => {
+  const [selectedDay, setSelectedDay] = useState(null);
+  const { selectedBoxes, setSelectedBoxes, lecciones = []} = props;
+  console.log(lecciones)
 
-  const handleMenuClick = () => {
-    setShowMenu(!showMenu);
+  const handleDropdownClick = (index) => {
+    if (selectedDay === index) {
+      setSelectedDay(null);
+    } else {
+      setSelectedDay(index);
+    }
   };
-  const handleSearch = (event) => {
-    setSearchTerm(event.target.value);
-    console.log(event.target.value)
+
+  const handleBoxClick = (index) => {
+    // Check if the box is already selected
+    const isSelected = selectedBoxes.includes(index);
+
+    // If the box is not selected, add it to the selected boxes array
+    if (!isSelected) {
+      setSelectedBoxes([...selectedBoxes, index]);
+    } else {
+      // If the box is selected, remove it from the selected boxes array
+      setSelectedBoxes(selectedBoxes.filter((item) => item !== index));
+    }
   };
 
   return (
-    <header>
-      <div class="logo">
-        <img alt="Logo FR" src={Logo} className="logo-fr" />
-      </div>
-      <nav className={`menu ${showMenu ? "menu-toggle" : ""}`}>
-        <ul>
-          <li className="navbar-item">
-            <Link to={"/home"} className="navbar-link">
-              Inicio
-            </Link>
-          </li>
-          <li className="navbar-item">
-            <Link to={'/'} className="navbar-link">
-              Foro
-            </Link>
-          </li>
-          <li className="navbar-item">
-            <Link to={"/"} className="navbar-link">
-              Contáctanos
-            </Link>
-          </li>
-        </ul>
-      </nav>
-      <div className="input-search">
-          <input type="text" placeholder="¿Que quieres estudiar hoy?" className="navbar-search" value={searchTerm} onChange={handleSearch}/> 
-          {/* <i class="fa-solid fa-magnifying-glass"></i> */}
+    <>
+    {lecciones.map((dia, index) => (
+      <div className="dropdown-container" key={index}>
+        <div className="dropdown-header" onClick={ () => handleDropdownClick(index)}>
+          <span>{dia.nombre}</span>
+          <span className="arrow-icon">{selectedDay === index ? "▲" : "▼"}</span>
         </div>
-      <div class="menu-toggle" onClick={handleMenuClick}>
-        <span></span>
-        <span></span>
-        <span></span>
+        {selectedDay === index && (
+          <div className="box-container">
+            {dia.temas.map((tema, idx) => (
+              <div
+                className={`box-dropdown ${
+                  selectedBoxes.includes(idx) ? "selected" : ""
+                }`}
+                key={idx}
+                onClick={() => handleBoxClick(idx)}
+              >
+                {/* {console.log(tema)} */}
+                <h2>{tema.titulo}</h2>
+                <p>{tema.duracion}</p>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
-    </header>
+      ))}
+    </>
   );
 };
 
-export default Prueba;
+export default Dias;

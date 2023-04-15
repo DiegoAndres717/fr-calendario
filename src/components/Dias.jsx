@@ -1,99 +1,66 @@
 import React, { useState } from "react";
 import "../styles/Dias.css";
+import Buttons from "./Buttons";
+import { Link } from "react-router-dom";
 
 const Dias = (props) => {
-  const [showBox, setShowBox] = useState(false);
-  const { selectedBoxes, setSelectedBoxes } = props;
+  const { lecciones = [], handleBoxClick, selectedBoxes } = props;
+  const [selectedDay, setSelectedDay] = useState(null);
+  const [showMore, setShowMore] = useState(false);
+  const [leccionesToShow, setLeccionesToShow] = useState(lecciones.slice(0, 7));
+  const [isFirstPage, setIsFirstPage] = useState(true);
+  console.log(props);
 
-  const handleDropdownClick = () => {
-    setShowBox(!showBox);
+  const handleDropdownClick = (index) => {
+    if (selectedDay === index) {
+      setSelectedDay(null);
+    } else {
+      setSelectedDay(index);
+    }
   };
 
-  const handleBoxClick = (index) => {
-    // Check if the box is already selected
-    const isSelected = selectedBoxes.includes(index);
-
-    // If the box is not selected, add it to the selected boxes array
-    if (!isSelected) {
-      setSelectedBoxes([...selectedBoxes, index]);
-    } else {
-      // If the box is selected, remove it from the selected boxes array
-      setSelectedBoxes(selectedBoxes.filter((item) => item !== index));
-    }
+  const handleThemeButtonClick = (start, end) => {
+    setShowMore(end > 7);
+    setLeccionesToShow(lecciones.slice(start, end));
+    setIsFirstPage(start === 0);
   };
 
   return (
     <>
-      <div className="dropdown-container">
-        <div className="dropdown-header" onClick={handleDropdownClick}>
-          <span>Día 1</span>
-          <span className="arrow-icon">{showBox ? "▲" : "▼"}</span>
-        </div>
-        {showBox && (
-          <div className="box-container">
-            {Array.from({ length: 13 }, (_, i) => (
-              <div
-                className={`box-dropdown ${
-                  selectedBoxes.includes(i) ? "selected" : ""
-                }`}
-                key={i}
-                onClick={() => handleBoxClick(i)}
-              >
-                <h2>Titulo</h2>
-                <p>Duración</p>
-              </div>
-            ))}
-            {/* <div className="box-dropdown">
-              <h2>Titulo</h2>
-              <p>Duración</p>
-            </div>
-            <div className="box-dropdown">
-              <h2>Titulo</h2>
-              <p>Duración</p>
-            </div>
-            <div className="box-dropdown">
-              <h2>Titulo</h2>
-              <p>Duración</p>
-            </div>
-            <div className="box-dropdown">
-              <h2>Titulo</h2>
-              <p>Duración</p>
-            </div>
-            <div className="box-dropdown">
-              <h2>Titulo</h2>
-              <p>Duración</p>
-            </div>
-            <div className="box-dropdown">
-              <h2>Titulo</h2>
-              <p>Duración</p>
-            </div>
-            <div className="box-dropdown">
-              <h2>Titulo</h2>
-              <p>Duración</p>
-            </div>
-            <div className="box-dropdown">
-              <h2>Titulo</h2>
-              <p>Duración</p>
-            </div>
-            <div className="box-dropdown">
-              <h2>Titulo</h2>
-              <p>Duración</p>
-            </div>
-            <div className="box-dropdown">
-              <h2>Titulo</h2>
-              <p>Duración</p>
-            </div>
-            <div className="box-dropdown">
-              <h2>Titulo</h2>
-              <p>Duración</p>
-            </div>
-            <div className="box-dropdown">
-              <h2>Titulo</h2>
-              <p>Duración</p>
-            </div> */}
+      {leccionesToShow.map((leccion, index) => (
+        <div className="dropdown-container" key={index}>
+          <div
+            className="dropdown-header"
+            onClick={() => handleDropdownClick(index)}
+          >
+            <span>{leccion.dia}</span>
+            <span className="arrow-icon">
+              {selectedDay === index ? "▲" : "▼"}
+            </span>
           </div>
-        )}
-      </div>
+          {selectedDay === index && (
+            <div className="box-container">
+              {leccion.temas.map((tema, idx) => (
+                <Link to={tema.url} target="_blank"
+                  className={`box-dropdown ${
+                    selectedBoxes.includes(idx) ? "selected" : ""
+                  }`}
+                  key={idx}
+                  onClick={() => handleBoxClick(idx)}
+                >
+                  <h2>{tema.titulo}</h2>
+                  <p>{tema.duracion}</p>
+                </Link>
+              ))}
+            </div>
+          )}
+        </div>
+      ))}
+      <Buttons
+        handleThemeButtonClick={handleThemeButtonClick}
+        showMore={showMore}
+        lecciones={lecciones}
+      />
     </>
   );
 };

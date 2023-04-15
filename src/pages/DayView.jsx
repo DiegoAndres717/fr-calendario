@@ -1,27 +1,71 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 import Dias from "../components/Dias";
-import ProgressBar from "../components/ProgressBar";
-
 import "../styles/DayView.css";
+import ProgressBar from "../components/ProgressBar";
+import Spinner from "../components/Spinner";
+
+const VITE_INITIAL_URL = import.meta.env.VITE_INITIAL_URL
 
 const DayView = () => {
   const [selectedBoxes, setSelectedBoxes] = useState([]);
+  const [lecciones, setLecciones] = useState([]);
+  const [progress, setProgress] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const fetchLecciones = async (url) => {
+    await fetch(url)
+      .then((res) => res.json())
+      .then((data) => {
+        setLecciones(data[0].lecciones);
+        setIsLoading(false);
+      });
+  };
+  console.log(lecciones);
+
+  useEffect(() => {
+    fetchLecciones(VITE_INITIAL_URL);
+  }, []);
+
+  const handleBoxClick = (index) => {
+    // Check if the box is already selected
+    const isSelected = selectedBoxes.includes(index);
+
+    // If the box is not selected, add it to the selected boxes array and update progress
+    if (!isSelected) {
+      setSelectedBoxes([...selectedBoxes, index]);
+      setProgress(progress + 1);
+    } else {
+      // If the box is selected, remove it from the selected boxes array and update progress
+      setSelectedBoxes(selectedBoxes.filter((item) => item !== index));
+      setProgress(progress - 1);
+    }
+  };
+  const totalTemas = lecciones.reduce(
+    (total, leccion) => total + leccion.temas.length,
+    0
+  );
+  const progressPercentage = Math.round((progress / totalTemas) * 100);
+
   return (
     <>
+    {isLoading ? (
+        <Spinner />
+      ) : (
       <div className="content">
-        <div class="container">
-          <div class="month-one">
-            <p>Mes 1 de 4</p>
-          </div>
-          <div class="month-two">
-            <p>Mes 2 de 4</p>
-          </div>
-          <div class="month-three">
-            <p>Mes 3 de 4</p>
-          </div>
-          <div class="month-four">
-            <p>Mes 4 de 4</p>
+        <div className="container">
+          <div className="container-month">
+            <div className="month-one">
+              <p>Mes 1 de 4</p>
+            </div>
+            <div className="month-two">
+              <p>Mes 2 de 4</p>
+            </div>
+            <div className="month-three">
+              <p>Mes 3 de 4</p>
+            </div>
+            <div className="month-four">
+              <p>Mes 4 de 4</p>
+            </div>
           </div>
           <div className="summary">
             <span>Resumen del mes</span>
@@ -32,28 +76,15 @@ const DayView = () => {
             <p>20 dias de estudio</p>
             <p>67 h 32 min</p>
           </div>
-          <div className="button-circle-back">
-            <Link to={"/home"} className="back-button-day">
-              <i class="fa-solid fa-circle-chevron-left btn"></i>
-              <span>Regresar</span>
-            </Link>
-          </div>
-          <div className="button-circle-next">
-            <Link to={"/home"} className="next-button">
-              <span>Ir a los días 8 - 14</span>
-              <i class="fa-solid fa-circle-chevron-right"></i>
-            </Link>
-          </div>
-          <ProgressBar
-            selectedBoxes={selectedBoxes}
-            setSelectedBoxes={setSelectedBoxes}
-          />
         </div>
+        <ProgressBar progressPercentage={progressPercentage} />
         <Dias
+          lecciones={lecciones}
           selectedBoxes={selectedBoxes}
-          setSelectedBoxes={setSelectedBoxes}
+          handleBoxClick={handleBoxClick}
         />
       </div>
+      )}
     </>
   );
 };

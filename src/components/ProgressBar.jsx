@@ -1,13 +1,12 @@
 import "../styles/ProgressBar.css";
 import React from "react";
 
-const ProgressBar = ({ selectedBoxes }) => {
-  const progress = Math.floor((selectedBoxes.length / 13) * 100);
+const ProgressBar = ({ progressPercentage }) => {
 
   return (
     <div className="progress-bar">
-      <div className="progress" style={{ width: `${progress}%` }}>
-        <span>{`Avance de ${progress}%`}</span>
+      <div className="progress" style={{ width: `${progressPercentage}%` }}>
+        <span>{`Avance de ${progressPercentage}%`}</span>
       </div>
     </div>
   );

@@ -1,4 +1,3 @@
-import './App.css';
 import { HashRouter, Route, Routes } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import FirstOption from './pages/FirstOption';

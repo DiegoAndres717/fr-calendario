@@ -17,7 +17,7 @@ const NavBar = () => {
 
   return (
     <header>
-      <div class="logo">
+      <div className="logo">
         <img alt="Logo FR" src={Logo} className="logo-fr" />
       </div>
       <div className="input-search">
@@ -51,7 +51,7 @@ const NavBar = () => {
           </li>
         </ul>
       </nav>
-      <div class="menu-toggle" onClick={handleMenuClick}>
+      <div className="menu-toggle" onClick={handleMenuClick}>
         <span></span>
         <span></span>
         <span></span>
