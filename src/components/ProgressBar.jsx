@@ -11,10 +11,5 @@ const ProgressBar = ({ progressPercentage }) => {
     </div>
   );
 };
-/* div class="progress-container">
-        <div class="progress-background"></div>
-        <div class="progress-bar">
-          <span class="progress-label">Avance del mes 25%</span>
-        </div>
-      </div> */
+
 export default ProgressBar;

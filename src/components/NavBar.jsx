@@ -17,9 +17,9 @@ const NavBar = () => {
 
   return (
     <header>
-      <div className="logo">
+      <Link className="logo" to={'/home'}>
         <img alt="Logo FR" src={Logo} className="logo-fr" />
-      </div>
+      </Link>
       <div className="input-search">
         <input
           type="text"
@@ -31,24 +31,11 @@ const NavBar = () => {
       </div>
       <nav className={`menu ${showMenu ? "menu-toggle" : ""}`}>
         <ul className="menu">
-          <li className="navbar-item">
-            <Link to={"/home"} className="navbar-link">
-              Inicio
-            </Link>
-          </li>
-          <li className="navbar-item">
-            <Link to={"/"} className="navbar-link">
-              Foro
-            </Link>
-          </li>
-          <li className="navbar-item">
-            <Link to={"/"} className="navbar-link">
-              Contáctanos
-            </Link>
-          </li>
-          <li className="navbar-item">
-            <Link className="navbar-link">Cerrar sesión</Link>
-          </li>
+          {routes.map((route, index) =>(
+            <li key={index} className="navbar-item">
+              <Link to={route.to}  className="navbar-link">{route.name}</Link>
+            </li>
+          ))}
         </ul>
       </nav>
       <div className="menu-toggle" onClick={handleMenuClick}>
@@ -59,5 +46,23 @@ const NavBar = () => {
     </header>
   );
 };
+
+const routes = [];
+routes.push({
+  to: "/home",
+  name: 'Inicio',
+});
+routes.push({
+  to: "/foro",
+  name: 'Foro',
+});
+routes.push({
+  to: "/contact",
+  name: 'Contáctanos',
+});
+routes.push({
+  to: "/home",
+  name: 'Cerrar sesión',
+});
 
 export default NavBar;
