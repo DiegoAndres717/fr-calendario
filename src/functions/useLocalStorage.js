@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
-export const useLocalStorage = (key, initialValue) => {
+function useLocalStorage(key, initialValue) {
   const [storedValue, setStoredValue] = useState(() => {
     try {
       const item = window.localStorage.getItem(key);
@@ -11,12 +11,14 @@ export const useLocalStorage = (key, initialValue) => {
     }
   });
 
+  const prevKeyRef = useRef(key);
+
   useEffect(() => {
-    try {
-      window.localStorage.setItem(key, JSON.stringify(storedValue));
-    } catch (error) {
-      console.log(error);
+    if (prevKeyRef.current !== key) {
+      window.localStorage.removeItem(prevKeyRef.current);
+      prevKeyRef.current = key;
     }
+    window.localStorage.setItem(key, JSON.stringify(storedValue));
   }, [key, storedValue]);
 
   return [storedValue, setStoredValue];
@@ -35,5 +37,8 @@ function useLocalStorageFirst(key, initialValue) {
   return [value, setValue];
 }
 
-export default useLocalStorageFirst;
+export {
+  useLocalStorage,
+  useLocalStorageFirst,
+};
 

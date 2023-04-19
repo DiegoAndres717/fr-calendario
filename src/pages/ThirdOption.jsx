@@ -1,13 +1,44 @@
 import React from "react";
 import "../styles/ThirdOption.css";
+import DayView from "./DayView";
+import { useLocalStorageFirst } from "../functions/useLocalStorage";
 
-const ThirdOption = () => {
+const ThirdOption = ({ setMes }) => {
+  const [selectedMonth, setSelectedMonth] = useLocalStorageFirst(
+    "selectedMonth",
+    ""
+  );
+  const months = [
+    "mes-1",
+    "mes-2",
+    "mes-3",
+    "mes-4",
+    "mes-5",
+    "mes-6",
+    "mes-7",
+    "mes-8",
+    "mes-9",
+    "mes-10",
+    "mes-11",
+  ];
+  if (months.includes(selectedMonth)) {
+    return <DayView />;
+  }
+  const handleBackButtonClick = () => {
+    setMes("");
+    return
+  };
   return (
     <>
       <div className="container-third">
         <h1>Selecciona el mes que estás estudiando actualmente</h1>
         {cards.map((card, index) => (
-          <button to={card.to} className={card.classLink} key={index}>
+          <button
+            to={card.to}
+            className={card.classLink}
+            key={index}
+            onClick={() => setSelectedMonth(`mes-${index + 1}`)}
+          >
             <div className={card.claseDiv}>
               <h2>{card.title}</h2>
               <p>{card.text}</p>
@@ -16,7 +47,7 @@ const ThirdOption = () => {
             </div>
           </button>
         ))}
-        <button className="back-button">
+        <button className="back-button" onClick={handleBackButtonClick}>
           <i className="fa-solid fa-circle-chevron-left">
             <span>Regresar</span>
           </i>

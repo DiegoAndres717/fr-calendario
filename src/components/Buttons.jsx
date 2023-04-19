@@ -2,12 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 import '../styles/Buttons.css'
 
-const Buttons = ({ showMore, handleThemeButtonClick, lecciones }) => {
+const Buttons = ({ showMore, handleShowMoreThemes , lecciones }) => {
 
   const start = showMore ? 0 : 7;
   const end = showMore ? 7 : lecciones.length;
   const buttonText = showMore ? "Ir a temas 1 - 7" : "Ir a temas 8 - " + lecciones.length;
-  const buttonAction = showMore ? () => handleThemeButtonClick(0, 7) : () => handleThemeButtonClick(7, lecciones.length);
+  const buttonAction = showMore ? () => handleShowMoreThemes (0, 7) : () => handleShowMoreThemes(7, lecciones.length);
 
   return (
     <>

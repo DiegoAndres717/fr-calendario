@@ -1,14 +1,32 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import "../styles/SecondOption.css";
+import { useLocalStorageFirst } from "../functions/useLocalStorage";
+import DayView from "./DayView";
 
-const SecondOption = () => {
+const SecondOption = ({ setMes }) => {
+  const [currentMonth, setCurrentMonth] = useLocalStorageFirst(
+    "currentMonth",
+    ""
+  );
+  const months = ["mes-1", "mes-2", "mes-3", "mes-4", "mes-5", "mes-6"];
+  if (months.includes(currentMonth)) {
+    return <DayView />;
+  }
+  const handleBackButtonClick = () => {
+    setMes("");
+    return
+  };
   return (
     <>
       <div className="container-second">
         <h1>Selecciona el mes que estás estudiando actualmente</h1>
         {cards.map((card, index) => (
-          <button to={card.to} className={card.classLink} key={index}>
+          <button
+            to={card.to}
+            className={card.classLink}
+            key={index}
+            onClick={() => setCurrentMonth(`mes-${index + 1}`)}
+          >
             <div className={card.claseDiv}>
               <h2>{card.title}</h2>
               <p>{card.text}</p>
@@ -17,7 +35,7 @@ const SecondOption = () => {
             </div>
           </button>
         ))}
-        <button className="back-button">
+        <button className="back-button" onClick={handleBackButtonClick}>
           <i className="fa-solid fa-circle-chevron-left">
             <span>Regresar</span>
           </i>

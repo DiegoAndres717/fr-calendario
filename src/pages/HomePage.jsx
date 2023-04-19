@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import Imagen from '../assets/imagen-publica.png'
 import "../styles/HomePage.css";
 import FirstOption from "./FirstOption";
@@ -10,11 +9,11 @@ const HomePage = () => {
   const [mes, setMes] = useLocalStorage('mes', '');
 
   if (mes === 'mes-4') {
-    return <FirstOption />;
+    return <FirstOption setMes={setMes}/>;
   } else if (mes === 'mes-6') {
-    return <SecondOption />;
+    return <SecondOption setMes={setMes}/>;
   } else if (mes === 'mes-11') {
-    return <ThirdOption />;
+    return <ThirdOption setMes={setMes}/>;
   }
   return (
     <>

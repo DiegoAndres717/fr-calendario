@@ -1,15 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/Dias.css";
 import Buttons from "./Buttons";
 import { Link } from "react-router-dom";
 
-const Dias = (props) => {
-  const { lecciones = [], handleBoxClick, selectedBoxes } = props;
-  const [selectedDay, setSelectedDay] = useState(null);
+const Dias = ({ lecciones = [], handleBoxClick, selectedBoxes }) => {
+  const [selectedDay, setSelectedDay] = useState(-1);
   const [showMore, setShowMore] = useState(false);
-  const [leccionesToShow, setLeccionesToShow] = useState(lecciones.slice(0, 7));
+  const [leccionesToShow, setLeccionesToShow] = useState([]);
   const [isFirstPage, setIsFirstPage] = useState(true);
-  console.log(props);
+
+  useEffect(() => {
+    setLeccionesToShow(lecciones.slice(0, 7));
+  }, [lecciones]);
 
   const handleDropdownClick = (index) => {
     if (selectedDay === index) {
@@ -19,7 +21,7 @@ const Dias = (props) => {
     }
   };
 
-  const handleThemeButtonClick = (start, end) => {
+  const handleShowMoreThemes  = (start, end) => {
     setShowMore(end > 7);
     setLeccionesToShow(lecciones.slice(start, end));
     setIsFirstPage(start === 0);
@@ -57,7 +59,7 @@ const Dias = (props) => {
         </div>
       ))}
       <Buttons
-        handleThemeButtonClick={handleThemeButtonClick}
+        handleShowMoreThemes ={handleShowMoreThemes }
         showMore={showMore}
         lecciones={lecciones}
       />

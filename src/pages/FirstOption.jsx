@@ -1,45 +1,52 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../styles/FirstOption.css";
 import DayView from "./DayView";
-import useLocalStorageFirst from "../functions/useLocalStorage";
+import { useLocalStorageFirst } from "../functions/useLocalStorage";
 
-const FirstOption = () => {
-  const [mes, setMes] = useLocalStorageFirst("mes", "");
+const FirstOption = ({ setMes }) => {
+  const [currentMonth, setCurrentMonth] = useLocalStorageFirst(
+    "currentMonth",
+    ""
+  );
 
-  if (mes === "mes-1") {
-    return <DayView />;
-  } else if (mes === "mes-2") {
-    return <DayView />;
-  } else if (mes === "mes-3") {
-    return <DayView />;
-  } else if (mes === "mes-4") {
-    return <DayView />;
-  }
+  const monthOptions = {
+    "mes-1": <DayView />,
+    "mes-2": <DayView />,
+    "mes-3": <DayView />,
+    "mes-4": <DayView />,
+  };
+  const handleBackButtonClick = () => {
+    setMes("");
+    return 
+  };
+
   return (
-    <>
-      <div className="container-first">
-        <h1>Selecciona el mes que estás estudiando actualmente</h1>
-        {cards.map((card, index) => (
-          <button
-            className={card.classLink}
-            key={index}
-            onClick={() => setMes(`mes-${index + 1}`)}
-          >
-            <div className={card.claseDiv}>
-              <h2>{card.title}</h2>
-              <p>{card.text}</p>
-              <p>{card.text2}</p>
-              <p>{card.text3}</p>
-            </div>
+    monthOptions[currentMonth] || (
+      <>
+        <div className="container-first">
+          <h1>Selecciona el mes que estás estudiando actualmente</h1>
+          {cards.map((card, index) => (
+            <button
+              className={card.classLink}
+              key={index}
+              onClick={() => setCurrentMonth(`mes-${index + 1}`)}
+            >
+              <div className={card.claseDiv}>
+                <h2>{card.title}</h2>
+                <p>{card.text}</p>
+                <p>{card.text2}</p>
+                <p>{card.text3}</p>
+              </div>
+            </button>
+          ))}
+          <button className="back-button" onClick={handleBackButtonClick}>
+            <i className="fa-solid fa-circle-chevron-left">
+              <span>Regresar</span>
+            </i>
           </button>
-        ))}
-        <button className="back-button">
-          <i className="fa-solid fa-circle-chevron-left">
-            <span>Regresar</span>
-          </i>
-        </button>
-      </div>
-    </>
+        </div>
+      </>
+    )
   );
 };
 const cards = [];
