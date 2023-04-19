@@ -6,15 +6,11 @@
     width: 900px;
 }
 
-.my-link {
+.btn-home {
     display: flex;
     justify-content: center;
     align-items: center;
     text-decoration: none;
-}
-
-/* Define el estilo para las tarjetas */
-.card {
     width: 100%;
     max-width: 14rem;
     height: 14rem;
@@ -27,6 +23,8 @@
     cursor: pointer;
     box-shadow: 0.2rem 0.5rem 0.5rem rgba(0, 0, 0, 0.25);
 }
+
+/* Define el estilo para las tarjetas */
 
 .card p {
     color: rgb(40, 95, 156);
@@ -71,24 +69,17 @@ h1 {
         margin: auto;
 
     }
-
-    /* Define el estilo para las tarjetas */
-    .card {
-        width: 150px;
-        height: 150px;
-    }
-
-    .my-link:first-of-type {
+    .btn-home:first-of-type {
         margin-top: 10rem;
     }
 
-    .my-link:last-of-type {
-        margin-bottom: 10rem;
+
+    /* Define el estilo para las tarjetas */
+    .btn-home {
+        width: 250px;
+        margin-bottom: 30px;
     }
 
-    .my-link {
-        height: 250px;
-    }
 
     h1 {
         top: 5rem;
@@ -106,11 +97,6 @@ h1 {
     .container-home {
         margin-top: 14rem;
         margin-left: 2rem;
-    }
-
-    .card {
-        width: 10rem;
-        height: 10rem;
     }
 
     .imagen-publica img {

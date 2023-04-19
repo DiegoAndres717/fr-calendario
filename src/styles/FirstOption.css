@@ -2,9 +2,10 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     margin-top: 10rem;
+    margin-left: 35px;
 }
 
-.card-first {
+.btn-first-option {
     width: 200px;
     height: 200px;
     margin: 30px;
@@ -19,7 +20,6 @@
     text-align: center;
     box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.25);
 }
-
 .card-first h2 {
     color: rgb(0, 183, 181);
     font-size: 22px;
@@ -45,12 +45,7 @@
     color: rgb(40, 95, 156);
 }
 
-.back-button {
-    font-size: 50px;
-    color: rgb(63, 69, 133);
-    text-decoration: none;
-}
-.button-circle {
+.back-button{
     width: 210px;
     height: 50px;
     border-radius: 10px;
@@ -58,16 +53,17 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 22px;
-}
-.button-circle {
     position: relative;
     bottom: 80px;
-    left: 650px;
+    left: 620px;
     top: 50px;
     transform: translateX(-50%);
     margin-bottom: 100px;
+    border: 0.2rem solid rgb(231, 233, 235);
+    text-decoration: none;
+    cursor: pointer;
 }
+
 .fa-solid {
     color: azure;
     font-size: 26px;
@@ -97,27 +93,26 @@
     }
 
     /* Define el estilo para las tarjetas */
-    .card-first{
+    .btn-first-option{
         width: 150px;
         height: 150px;
+        padding: 0px;
     }
-    h2{
+    .card-first h2{
         font-size: 20px;
+        padding: 10;
+        margin: 0.4;
     }
-    .card-first p {
+    .btn-first-option p {
         font-size: 16px;
     }
-    .my-link:first-of-type {
+    .btn-first-option:first-of-type {
         margin-top: 10rem;
     }
 
    /*  .my-link:last-of-type {
         margin-bottom: 10rem;
     } */
-
-    .my-link {
-        height: 250px;
-    }
 
     .container-first h1 {
         top: 6rem;
@@ -127,12 +122,12 @@
     .fa-solid {
         font-size: 18px;
     }
-    .button-circle {
+    .back-button {
         width: 150px;
         height: 40px;
         bottom: 40px;
-        left: 82px;
-        top: -80px;
+        left: 74px;
+        top: 20px;
         transform: translateX(-50%);
     }
 }

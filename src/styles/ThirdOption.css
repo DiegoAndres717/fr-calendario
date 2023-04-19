@@ -8,7 +8,7 @@
 }
 
 
-.box-third {
+.btn-third-option {
     width: 200px;
     height: 200px;
     margin: 10px;
@@ -49,25 +49,9 @@ h2 {
     color: rgb(40, 95, 156);
 }
 
-.back-button {
-    font-size: 50px;
-    color: rgb(63, 69, 133);
-}
-
-.button-circle-third {
-    width: 210px;
-    height: 50px;
-    border-radius: 10px;
-    background-color: rgb(0, 182, 180);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 22px;
-}
-
-.button-circle-third {
+.container-third .back-button {
     position: relative;
-    bottom: 200px;
+    bottom: 300px;
     left: -300px;
     top: 400px;
     transform: translateX(-50%);
@@ -101,7 +85,7 @@ h2 {
     .box-third p {
         font-size: 16px;
     }
-    .container-third .my-link:first-of-type {
+    .container-third .btn-third-option:first-of-type {
         margin-top: 10rem;
     }
 
@@ -109,21 +93,17 @@ h2 {
         margin-bottom: 10rem;
     } */
 
-    .container-third .my-link {
-        height: 200px;
-    }
-
     .container-third h1 {
         top: 6rem;
         font-size: 16px;
 
     }
 
-    .button-circle-third {
+    .container-third .back-button {
         width: 150px;
         height: 40px;
         left: 80px;
-        top: -90px;
+        top: 20px;
         transform: translateX(-50%);
     }
 }

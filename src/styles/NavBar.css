@@ -169,6 +169,9 @@ nav ul {
     header {
       padding: 0;
     }
+    .logo-fr {
+      margin-left: 0;
+    }
   
     .logo-fr {
       max-width: 7.5rem;
