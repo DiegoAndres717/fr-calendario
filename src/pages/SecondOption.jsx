@@ -10,7 +10,7 @@ const SecondOption = ({ setMes }) => {
   );
   const months = ["mes-1", "mes-2", "mes-3", "mes-4", "mes-5", "mes-6"];
   if (months.includes(currentMonth)) {
-    return <DayView />;
+    return <DayView setCurrentMonth={setCurrentMonth}/>;
   }
   const handleBackButtonClick = () => {
     setMes("");
@@ -47,7 +47,6 @@ const SecondOption = ({ setMes }) => {
 
 const cards = [];
 cards.push({
-  to: "/view-day",
   classLink: "btn-second-option",
   claseDiv: "card-second",
   title: "Mes 1",
@@ -56,7 +55,6 @@ cards.push({
   text3: "20 horas",
 });
 cards.push({
-  to: "/view-day",
   classLink: "btn-second-option",
   claseDiv: "card-second",
   title: "Mes 2",
@@ -65,7 +63,6 @@ cards.push({
   text3: "20 horas",
 });
 cards.push({
-  to: "/view-day",
   classLink: "btn-second-option",
   claseDiv: "card-second",
   title: "Mes 3",
@@ -74,7 +71,6 @@ cards.push({
   text3: "20 horas",
 });
 cards.push({
-  to: "/view-day",
   classLink: "btn-second-option",
   claseDiv: "card-second",
   title: "Mes 4",
@@ -83,7 +79,6 @@ cards.push({
   text3: "20 horas",
 });
 cards.push({
-  to: "/view-day",
   classLink: "btn-second-option",
   claseDiv: "card-second",
   title: "Mes 5",
@@ -92,7 +87,6 @@ cards.push({
   text3: "20 horas",
 });
 cards.push({
-  to: "/view-day",
   classLink: "btn-second-option",
   claseDiv: "card-second",
   title: "Mes 6",

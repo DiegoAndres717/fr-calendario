@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import "../styles/FirstOption.css";
 import DayView from "./DayView";
 import { useLocalStorageFirst } from "../functions/useLocalStorage";
@@ -8,16 +8,17 @@ const FirstOption = ({ setMes }) => {
     "currentMonth",
     ""
   );
+  const [selectedMonth, setSelectedMonth] = useState(0)
 
   const monthOptions = {
-    "mes-1": <DayView />,
-    "mes-2": <DayView />,
-    "mes-3": <DayView />,
-    "mes-4": <DayView />,
+    "mes-1": <DayView setCurrentMonth={setCurrentMonth} currentMonth={currentMonth} selectedMonth={selectedMonth} setSelectedMonth={setSelectedMonth}/>,
+    "mes-2": <DayView setCurrentMonth={setCurrentMonth}  currentMonth={currentMonth} selectedMonth={selectedMonth} setSelectedMonth={setSelectedMonth}/>,
+    "mes-3": <DayView setCurrentMonth={setCurrentMonth}  currentMonth={currentMonth} selectedMonth={selectedMonth} setSelectedMonth={setSelectedMonth}/>,
+    "mes-4": <DayView setCurrentMonth={setCurrentMonth}  currentMonth={currentMonth} selectedMonth={selectedMonth} setSelectedMonth={setSelectedMonth}/>,
   };
   const handleBackButtonClick = () => {
     setMes("");
-    return 
+    return;
   };
 
   return (

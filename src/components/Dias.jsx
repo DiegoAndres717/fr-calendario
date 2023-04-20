@@ -3,7 +3,7 @@ import "../styles/Dias.css";
 import Buttons from "./Buttons";
 import { Link } from "react-router-dom";
 
-const Dias = ({ lecciones = [], handleBoxClick, selectedBoxes }) => {
+const Dias = ({ lecciones = [], handleBoxClick, selectedBoxes, setCurrentMonth }) => {
   const [selectedDay, setSelectedDay] = useState(-1);
   const [showMore, setShowMore] = useState(false);
   const [leccionesToShow, setLeccionesToShow] = useState([]);
@@ -62,6 +62,7 @@ const Dias = ({ lecciones = [], handleBoxClick, selectedBoxes }) => {
         handleShowMoreThemes ={handleShowMoreThemes }
         showMore={showMore}
         lecciones={lecciones}
+        setCurrentMonth={setCurrentMonth}
       />
     </>
   );

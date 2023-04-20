@@ -17,17 +17,11 @@
     width: 200px;
     height: 60px;
     border-radius: 12px;
-    background-color: #004A72;
+    background-color: #dbdbdb;
     cursor: pointer;
   }
-  .month-two {
-    background-color: #dbdbdb;
-  }
-  .month-three {
-    background-color: #dbdbdb;
-  }
-  .month-four{
-    background-color: #dbdbdb;
+  .selected{
+    background-color: #004A72;
   }
   .month-one, .month-two, .month-three, .month-four p {
     color: rgb(251, 253, 253);
@@ -78,17 +72,8 @@
       width: 80px;
       height: 35px;
       border-radius: 12px;
-      background-color: #004A72;
+      background-color: #dbdbdb;
       cursor: pointer;
-    }
-    .month-two {
-      background-color: #dbdbdb;
-    }
-    .month-three {
-      background-color: #dbdbdb;
-    }
-    .month-four{
-      background-color: #dbdbdb;
     }
     .month-one, .month-two, .month-three, .month-four p {
       color: rgb(251, 253, 253);
@@ -101,6 +86,9 @@
       width: 50%;
       height: 40px;
       font-size: 16px;
+    }
+    .selected{
+      background-color: #004A72;
     }
     .lecciones {
       top: 70px;

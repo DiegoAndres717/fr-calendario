@@ -4,8 +4,8 @@ import DayView from "./DayView";
 import { useLocalStorageFirst } from "../functions/useLocalStorage";
 
 const ThirdOption = ({ setMes }) => {
-  const [selectedMonth, setSelectedMonth] = useLocalStorageFirst(
-    "selectedMonth",
+  const [currentMonth, setCurrentMonth] = useLocalStorageFirst(
+    "currentMonth",
     ""
   );
   const months = [
@@ -21,12 +21,12 @@ const ThirdOption = ({ setMes }) => {
     "mes-10",
     "mes-11",
   ];
-  if (months.includes(selectedMonth)) {
-    return <DayView />;
+  if (months.includes(currentMonth)) {
+    return <DayView setCurrentMonth={setCurrentMonth} />;
   }
   const handleBackButtonClick = () => {
     setMes("");
-    return
+    return;
   };
   return (
     <>
@@ -37,7 +37,7 @@ const ThirdOption = ({ setMes }) => {
             to={card.to}
             className={card.classLink}
             key={index}
-            onClick={() => setSelectedMonth(`mes-${index + 1}`)}
+            onClick={() => setCurrentMonth(`mes-${index + 1}`)}
           >
             <div className={card.claseDiv}>
               <h2>{card.title}</h2>
@@ -59,7 +59,6 @@ const ThirdOption = ({ setMes }) => {
 
 const cards = [];
 cards.push({
-  to: "/view-day",
   classLink: "btn-third-option",
   claseDiv: "box-third",
   title: "Mes 1",
@@ -68,7 +67,6 @@ cards.push({
   text3: "20 horas",
 });
 cards.push({
-  to: "/view-day",
   classLink: "btn-third-option",
   claseDiv: "box-third",
   title: "Mes 2",
@@ -77,7 +75,6 @@ cards.push({
   text3: "20 horas",
 });
 cards.push({
-  to: "/view-day",
   classLink: "btn-third-option",
   claseDiv: "box-third",
   title: "Mes 3",
@@ -86,7 +83,6 @@ cards.push({
   text3: "20 horas",
 });
 cards.push({
-  to: "/view-day",
   classLink: "btn-third-option",
   claseDiv: "box-third",
   title: "Mes 4",
@@ -95,7 +91,6 @@ cards.push({
   text3: "20 horas",
 });
 cards.push({
-  to: "/view-day",
   classLink: "btn-third-option",
   claseDiv: "box-third",
   title: "Mes 5",
@@ -104,7 +99,6 @@ cards.push({
   text3: "20 horas",
 });
 cards.push({
-  to: "/view-day",
   classLink: "btn-third-option",
   claseDiv: "box-third",
   title: "Mes 6",
@@ -113,7 +107,6 @@ cards.push({
   text3: "20 horas",
 });
 cards.push({
-  to: "/view-day",
   classLink: "btn-third-option",
   claseDiv: "box-third",
   title: "Mes 7",
@@ -122,7 +115,6 @@ cards.push({
   text3: "20 horas",
 });
 cards.push({
-  to: "/view-day",
   classLink: "btn-third-option",
   claseDiv: "box-third",
   title: "Mes 8",
@@ -131,7 +123,6 @@ cards.push({
   text3: "20 horas",
 });
 cards.push({
-  to: "/view-day",
   classLink: "btn-third-option",
   claseDiv: "box-third",
   title: "Mes 9",
@@ -140,7 +131,6 @@ cards.push({
   text3: "20 horas",
 });
 cards.push({
-  to: "/view-day",
   classLink: "btn-third-option",
   claseDiv: "box-third",
   title: "Mes 10",
@@ -149,7 +139,6 @@ cards.push({
   text3: "20 horas",
 });
 cards.push({
-  to: "/view-day",
   classLink: "btn-third-option",
   claseDiv: "box-third",
   title: "Mes 11",
