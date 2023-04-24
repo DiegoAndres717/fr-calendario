@@ -84,19 +84,27 @@
  
   /* Estilos para pantallas pequeñas */
   @media screen and (max-width: 768px) {
-    .day-container-month {
-      margin-left: 14px;
-      gap: 1px;
+    .container-month-two {
+      margin-left: 70px;
 
     }
-    .day-month-one, .day-month-two, .day-month-three, .day-month-four {
+    .day-month-one, .day-month-three {
       width: 80px;
       height: 35px;
       border-radius: 12px;
       background-color: #dbdbdb;
       cursor: pointer;
     }
-    .day-month-one, .day-month-two, .day-month-three, .day-month-four p {
+    .day-month-two {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 50px;
+      height: 50px;
+      margin-left: 15px;
+      border-radius: 50%;
+    }
+    .day-month-one, .day-month-two, .day-month-three{
       color: rgb(251, 253, 253);
       font-size: 13px;
       font-weight: bold;
@@ -108,8 +116,9 @@
       height: 40px;
       font-size: 16px;
     }
-    .day-selected{
-      background-color: #004A72;
+    .selected-container {
+      margin-left: 9.5rem;
+      gap: 1rem;
     }
     .day-lecciones {
       top: 70px;
@@ -191,4 +200,54 @@
     .lecciones {
       font-size: 16px;
     }
+  }
+  @media screen and (min-width: 768px) and (max-width: 1025px) {
+    .container-month-two {
+      margin-left: 200px;
+      margin-top: 40px;
+    }
+    
+    .day-month-one, .day-month-three {
+      width: 180px;
+      height: 60px;
+      background-color: #dbdbdb;
+      cursor: pointer;
+      border: 0;
+    }
+    .selected-container {
+      margin-left: 25rem;
+      gap: 3rem;
+    }
+    .day-month-two {
+      background-color: #004A72;
+      width: 90px;
+      height: 90px;
+      margin-left: 48px;
+      border-radius: 50%;
+    }
+    .day-month-one, .day-month-two, .day-month-three {
+      font-size: 24px;
+    }
+    
+    .day-summary {
+      top: 130px;
+      left: 55px;
+      width: 25%;
+      height: 40px;
+      font-size: 24px;
+      font-weight: bold;
+      color: #00b6b9;
+    }
+    .day-summary span{
+      margin-right: 12px;
+    }
+    .day-lecciones {
+      top: 170px;
+      left: 60px;
+      width: 40%;
+      height: 40px;
+      font-size: 16px;
+      color: #1d5696;
+    }
+    
   }

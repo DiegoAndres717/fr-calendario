@@ -50,7 +50,7 @@
   @media screen and (min-width: 768px) and (max-width: 1025px) {
     .progress-bar {
       left: 4rem;
-      top: 18.4rem;
+      top: 24rem;
       max-width: 880px;
     }
     .progress span {

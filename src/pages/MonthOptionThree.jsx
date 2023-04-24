@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import "../styles/MonthOptionThree.css";
-import DayView from "./DayView";
 import { useLocalStorageFirst } from "../functions/useLocalStorage";
+import DayViewTwo from "./DayViewTwo";
 
 const MonthOptionThree = ({ setMonthSelection }) => {
   const [currentMonth, setCurrentMonth] = useLocalStorageFirst(
     "currentMonth",
     ""
   );
+  const [selectedMonth, setSelectedMonth] = useState(1);
+  const [isActive, setIsActive] = useState(true);
   const months = [
     "mes-1",
     "mes-2",
@@ -22,8 +24,12 @@ const MonthOptionThree = ({ setMonthSelection }) => {
     "mes-11",
   ];
   if (months.includes(currentMonth)) {
-    return <DayView setCurrentMonth={setCurrentMonth} />;
+    return <DayViewTwo isActive={isActive} setCurrentMonth={setCurrentMonth} currentMonth={currentMonth} setSelectedMonth={setSelectedMonth} selectedMonth={selectedMonth} />;
   }
+  const handleMonthClick = (index) => {
+    setSelectedMonth(index + 1);
+    setCurrentMonth(`mes-${index + 1}`);
+  };
   const handleBackButtonClick = () => {
     setMonthSelection("");
     return;
@@ -37,7 +43,7 @@ const MonthOptionThree = ({ setMonthSelection }) => {
             to={card.to}
             className={card.classLink}
             key={index}
-            onClick={() => setCurrentMonth(`mes-${index + 1}`)}
+            onClick={() => handleMonthClick(index)}
           >
             <div className={card.claseDiv}>
               <h2>{card.title}</h2>
