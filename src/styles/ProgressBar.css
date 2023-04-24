@@ -5,9 +5,11 @@
     height: 30px;
     position: absolute;
     top: 20rem;
-    left: 5rem;
+    left: 5.4rem;
   }
-  
+  .progress-container{
+    top: 22rem;
+  }
   .progress {
     background-color: #007bff;
     border-radius: 10px;

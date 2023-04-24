@@ -3,14 +3,14 @@ import "../styles/Dias.css";
 import Buttons from "./Buttons";
 import { Link } from "react-router-dom";
 
-const Dias = ({ lecciones = [], handleBoxClick, selectedBoxes, setCurrentMonth }) => {
+const Dias = ({ lecciones = [], handleBoxClick, selectedBoxes, setCurrentMonth, selectedMonth }) => {
   const [selectedDay, setSelectedDay] = useState(-1);
   const [showMore, setShowMore] = useState(false);
-  const [leccionesToShow, setLeccionesToShow] = useState([]);
+  const [visibleLessons, setVisibleLessons] = useState([]);
   const [isFirstPage, setIsFirstPage] = useState(true);
 
   useEffect(() => {
-    setLeccionesToShow(lecciones.slice(0, 7));
+    setVisibleLessons(lecciones.slice(0, 7));
   }, [lecciones]);
 
   const handleDropdownClick = (index) => {
@@ -23,13 +23,13 @@ const Dias = ({ lecciones = [], handleBoxClick, selectedBoxes, setCurrentMonth }
 
   const handleShowMoreThemes  = (start, end) => {
     setShowMore(end > 7);
-    setLeccionesToShow(lecciones.slice(start, end));
+    setVisibleLessons(lecciones.slice(start, end));
     setIsFirstPage(start === 0);
   };
 
   return (
     <>
-      {leccionesToShow.map((leccion, index) => (
+      {visibleLessons.map((leccion, index) => (
         <div className="dropdown-container" key={index}>
           <div
             className="dropdown-header"
@@ -59,10 +59,11 @@ const Dias = ({ lecciones = [], handleBoxClick, selectedBoxes, setCurrentMonth }
         </div>
       ))}
       <Buttons
-        handleShowMoreThemes ={handleShowMoreThemes }
-        showMore={showMore}
         lecciones={lecciones}
+        showMore={showMore}
+        selectedMonth={selectedMonth}
         setCurrentMonth={setCurrentMonth}
+        handleShowMoreThemes ={handleShowMoreThemes }
       />
     </>
   );

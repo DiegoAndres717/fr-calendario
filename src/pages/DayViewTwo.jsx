@@ -9,13 +9,15 @@ const DayView = ({ setCurrentMonth, selectedMonth, setSelectedMonth }) => {
   const [selectedBoxes, setSelectedBoxes] = useState([]);
   const [progress, setProgress] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
-  const [lecciones, setLecciones] = useState(data.cursos[0].lecciones);
+  const [lecciones, setLecciones] = useState([]);
+  const [currentCursoIndex, setCurrentCursoIndex] = useState(0);
   const maxMonth = 6;
 
   useEffect(() => {
-    setLecciones(data.cursos[0].lecciones);
+    setIsLoading(true);
+    setLecciones(data.cursos[currentCursoIndex].lecciones);
     setIsLoading(false);
-  }, [data.cursos]);
+  }, [data.cursos, currentCursoIndex]);
 
   const handleBoxClick = useCallback(
     (index) => {
@@ -45,16 +47,25 @@ const DayView = ({ setCurrentMonth, selectedMonth, setSelectedMonth }) => {
       if (selectedMonth === maxMonth) {
         return maxMonth;
       } else {
-        return selectedMonth + 1;
+        const nextMonth = selectedMonth + 1;
+        setCurrentCursoIndex(
+          nextMonth - 1 // Los índices del array empiezan en 0, los meses en 1
+        );
+        return nextMonth;
       }
     });
   };
+
   const handlePrevMonthClick = () => {
     setSelectedMonth((selectedMonth) => {
       if (selectedMonth === 1) {
         return 1;
       } else {
-        return selectedMonth - 1;
+        const prevMonth = selectedMonth - 1;
+        setCurrentCursoIndex(
+          prevMonth - 1 // Los índices del array empiezan en 0, los meses en 1
+        );
+        return prevMonth;
       }
     });
   };
@@ -66,31 +77,32 @@ const DayView = ({ setCurrentMonth, selectedMonth, setSelectedMonth }) => {
       ) : (
         <div className="content">
           <div className="container-two">
-            <div className={`container-month-two ${selectedMonth === 1 ? "selected-container" : ""}`}>
-              {selectedMonth !==
-                1 ? (
-                  <button
-                    className="day-month-one"
-                    onClick={handlePrevMonthClick}
-                    disabled={selectedMonth === 0}
-                  >
-                    Ir a mes {selectedMonth - 1}
-                  </button>
-                ) : null}
+            <div
+              className={`container-month-two ${
+                selectedMonth === 1 ? "selected-container" : ""
+              }`}
+            >
+              {selectedMonth !== 1 ? (
+                <button
+                  className="day-month-one"
+                  onClick={handlePrevMonthClick}
+                  disabled={selectedMonth === 0}
+                >
+                  {selectedMonth > 1 ? `Ir a mes ${selectedMonth - 1}` : null}
+                </button>
+              ) : null}
               <div className={`day-month-two`}>
                 <p>Mes {selectedMonth}</p>
               </div>
-              {
-                selectedMonth!== maxMonth? (
-                  <button
-                    className="day-month-three"
-                    onClick={handleNextMonthClick}
-                    disabled={selectedMonth === maxMonth}
-                  >
-                    Ir a mes {selectedMonth + 1}
-                  </button>
-                ) : null
-              }
+              {selectedMonth !== maxMonth ? (
+                <button
+                  className="day-month-three"
+                  onClick={handleNextMonthClick}
+                  disabled={selectedMonth === maxMonth}
+                >
+                  Ir a mes {selectedMonth + 1}
+                </button>
+              ) : null}
             </div>
             <div className="day-summary">
               <span>Resumen del mes</span>
@@ -102,7 +114,10 @@ const DayView = ({ setCurrentMonth, selectedMonth, setSelectedMonth }) => {
               <p>67 h 32 min</p>
             </div>
           </div>
-          <ProgressBar progressPercentage={progressPercentage} selectedMonth={selectedMonth} />
+          <ProgressBar
+            progressPercentage={progressPercentage}
+            selectedMonth={selectedMonth}
+          />
           <Dias
             lecciones={lecciones}
             selectedBoxes={selectedBoxes}

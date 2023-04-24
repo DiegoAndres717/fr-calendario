@@ -1,9 +1,9 @@
 import React from "react";
-import "../styles/ThirdOption.css";
+import "../styles/MonthOptionThree.css";
 import DayView from "./DayView";
 import { useLocalStorageFirst } from "../functions/useLocalStorage";
 
-const ThirdOption = ({ setMes }) => {
+const MonthOptionThree = ({ setMonthSelection }) => {
   const [currentMonth, setCurrentMonth] = useLocalStorageFirst(
     "currentMonth",
     ""
@@ -25,7 +25,7 @@ const ThirdOption = ({ setMes }) => {
     return <DayView setCurrentMonth={setCurrentMonth} />;
   }
   const handleBackButtonClick = () => {
-    setMes("");
+    setMonthSelection("");
     return;
   };
   return (
@@ -147,4 +147,4 @@ cards.push({
   text3: "20 horas",
 });
 
-export default ThirdOption;
+export default MonthOptionThree;

@@ -16,6 +16,9 @@
   top: 240px;
   transform: translateX(-50%);
 }
+.selected-back{
+  top: 17rem;
+}
 .next-button {
   width: 250px;
   height: 40px;
@@ -33,6 +36,24 @@
   top: 240px;
   transform: translateX(-50%);
   cursor: pointer;
+}
+.day-next-button {
+  position: absolute;
+  bottom: 80px;
+  right: -40px;
+  top: 272px;
+  transform: translateX(-50%);
+  cursor: pointer;
+}
+.day-next-button {
+  width: 250px;
+  height: 40px;
+  border-radius: 10px;
+  background: linear-gradient(to right, #0098d4, #0077b5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0.2rem solid rgb(255, 255, 255);
 }
 
 .back-button-day {
@@ -53,7 +74,17 @@
   color: #ffffff;
   text-decoration: none;
 }
+.day-next-button {
+  display: flex;
+  font-size: 20px;
+  font-weight: bold;
+  color: #ffffff;
+  text-decoration: none;
+}
 .next-button span{
+  padding: 14px;
+}
+.day-next-button span{
   padding: 14px;
 }
 .back-button-day span{

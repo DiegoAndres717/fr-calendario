@@ -1,0 +1,194 @@
+.container-two {
+    position: relative;
+    text-align: center;
+  }
+  .container-month-two {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    align-items: center;
+    margin-left: 330px;
+    margin-top: 40px;
+  }
+  
+  .day-month-one, .day-month-three {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 60px;
+    border-radius: 12px;
+    background-color: #dbdbdb;
+    cursor: pointer;
+    border: 0;
+  }
+  .day-month-three:focus {
+    background-color: #c4c2c2;
+  }
+  .day-month-one:focus {
+    background-color: #c4c2c2;
+  }
+  .selected-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin-left: 36.3rem;
+    gap: 6.47rem;
+  }
+  .day-month-two {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #004A72;
+    width: 100px;
+    height: 100px;
+    margin-left: 48px;
+    border-radius: 50%;
+  }
+  .day-month-one, .day-month-two, .day-month-three {
+    color: rgb(251, 253, 253);
+    font-size: 26px;
+    font-weight: bold;
+    /* display: flex; */
+  }
+  
+  .day-summary {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 110px;
+    left: 55px;
+    width: 25%;
+    height: 40px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #00b6b9;
+  }
+  .day-summary span{
+    margin-right: 16px;
+  }
+  .day-lecciones {
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    top: 150px;
+    left: 80px;
+    width: 40%;
+    height: 40px;
+    font-size: 22px;
+    color: #1d5696;
+  }
+  .day-lecciones p{
+    margin-right: 10px;
+  }
+ 
+  /* Estilos para pantallas pequeñas */
+  @media screen and (max-width: 768px) {
+    .day-container-month {
+      margin-left: 14px;
+      gap: 1px;
+
+    }
+    .day-month-one, .day-month-two, .day-month-three, .day-month-four {
+      width: 80px;
+      height: 35px;
+      border-radius: 12px;
+      background-color: #dbdbdb;
+      cursor: pointer;
+    }
+    .day-month-one, .day-month-two, .day-month-three, .day-month-four p {
+      color: rgb(251, 253, 253);
+      font-size: 13px;
+      font-weight: bold;
+    }
+    .day-summary {
+      top: 40px;
+      left: 100px;
+      width: 50%;
+      height: 40px;
+      font-size: 16px;
+    }
+    .day-selected{
+      background-color: #004A72;
+    }
+    .day-lecciones {
+      top: 70px;
+      /* left: 20px; */
+      width: 65%;
+      height: 40px;
+      font-size: 10px;
+      color: #1d5696;
+    }
+
+}
+  
+  /* Estilos para pantallas medianas */
+  @media screen and (min-width: 768px) and (max-width: 1025px) {
+    .day-container-month {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 40px;
+      margin-left: 40px;
+      margin-top: 40px;
+    }
+    .day-month-one, .day-month-two, .day-month-three, .day-month-four {
+      display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 160px;
+    height: 50px;
+    border-radius: 12px;
+    background-color: #004A72;
+    cursor: pointer;
+    }
+    .day-month-two {
+      left: 12rem;
+      background-color: #dbdbdb;
+    }
+    .day-month-three {
+      left: 26rem;
+      background-color: #dbdbdb;
+    }
+    .day-month-four{
+      left: 42rem;
+      background-color: #dbdbdb;
+    }
+    .day-month-one, .day-month-two, .day-month-three, .day-month-four p {
+      font-size: 22px;
+    }
+    .day-summary {
+      left: 66px;
+      font-size: 22px;
+    }
+    .day-summary span{
+      margin-right: 16px;
+    }
+    .button-circle-back {
+      left: 600px;
+      width: 140px;
+      height: 40px;
+  }
+  .button-circle-back {
+    right: 200px;
+}
+  .button-circle-next {
+      left: 840px;
+      width: 210px;
+      height: 40px;
+  }
+  .button-circle-next {
+      position: absolute;
+      bottom: 80px;
+      right: -70px;
+  }
+  
+    .back-button-day {
+      font-size: 20px;
+    }
+    .next-button {
+      font-size: 18px;
+    }
+    .lecciones {
+      font-size: 16px;
+    }
+  }

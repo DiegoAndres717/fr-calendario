@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import "../styles/FirstOption.css";
+import "../styles/MonthOptionOne.css";
 import DayView from "./DayView";
 import { useLocalStorageFirst } from "../functions/useLocalStorage";
 
-const FirstOption = ({ setMes }) => {
+const MonthOptionOne = ({ setMonthSelection }) => {
   const [currentMonth, setCurrentMonth] = useLocalStorageFirst(
     "currentMonth",
     ""
@@ -17,12 +17,12 @@ const FirstOption = ({ setMes }) => {
     "mes-4": <DayView setCurrentMonth={setCurrentMonth}  currentMonth={currentMonth} selectedMonth={selectedMonth} setSelectedMonth={setSelectedMonth}/>,
   };
   const handleBackButtonClick = () => {
-    setMes("");
+    setMonthSelection("");
     return;
   };
 
   return (
-    monthOptions[currentMonth] || (
+    monthOptions[currentMonth] ? monthOptions[currentMonth] : (
       <>
         <div className="container-first">
           <h1>Selecciona el mes que estás estudiando actualmente</h1>
@@ -84,4 +84,4 @@ cards.push({
   text3: "20 horas",
 });
 
-export default FirstOption;
+export default MonthOptionOne;

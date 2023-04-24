@@ -1,10 +1,10 @@
 import "../styles/ProgressBar.css";
 import React from "react";
 
-const ProgressBar = ({ progressPercentage }) => {
+const ProgressBar = ({ progressPercentage, selectedMonth }) => {
 
   return (
-    <div className="progress-bar">
+    <div className={`progress-bar ${selectedMonth ? 'progress-container' : ''}`}>
       <div className="progress" style={{ width: `${progressPercentage}%` }}>
         <span>{`Avance de ${progressPercentage}%`}</span>
       </div>

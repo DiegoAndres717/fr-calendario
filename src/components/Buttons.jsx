@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import '../styles/Buttons.css'
 
-const Buttons = ({ showMore, handleShowMoreThemes , lecciones, setCurrentMonth }) => {
+const Buttons = ({ showMore, handleShowMoreThemes , lecciones, setCurrentMonth, selectedMonth }) => {
 
   const start = showMore ? 0 : 7;
   const end = showMore ? 7 : lecciones.length;
@@ -16,7 +16,7 @@ const Buttons = ({ showMore, handleShowMoreThemes , lecciones, setCurrentMonth }
     <>
         <div>
             <button
-              className="back-button-day"
+              className={`back-button-day ${selectedMonth ? "selected-back" : ""}`}
               to='/home'
               onClick={handleBackButtonClick}
             >
@@ -26,13 +26,23 @@ const Buttons = ({ showMore, handleShowMoreThemes , lecciones, setCurrentMonth }
         </div>
         <div>
           <div className="button-circle-next">
-            <button
+            {selectedMonth ? (
+              <button
+              className="day-next-button"
+              onClick={buttonAction}
+            >
+              <span>{buttonText}</span>
+              <i className="fa-solid fa-circle-chevron-right"></i>
+            </button>
+            ) : (
+              <button
               className="next-button"
               onClick={buttonAction}
             >
               <span>{buttonText}</span>
               <i className="fa-solid fa-circle-chevron-right"></i>
             </button>
+            )}
           </div>
         </div>
         
