@@ -1,0 +1,166 @@
+.container-first {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin-top: 10rem;
+    margin-left: 35px;
+}
+
+.btn-first-option {
+    width: 200px;
+    height: 200px;
+    margin: 30px;
+    border: 3px solid rgb(40, 95, 156);
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    align-items: center;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.25);
+}
+.card-first h2 {
+    color: rgb(0, 183, 181);
+    font-size: 22px;
+    font-weight: bold;
+    text-transform: capitalize;
+    padding: 10px;
+}
+
+.card-first p {
+    color: rgb(40, 95, 156);
+    font-size: 20px;
+    text-align: center;
+    margin: 0;
+}
+
+.container-first h1 {
+    position: absolute;
+    top: 120px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 24px;
+    font-weight: bolder;
+    color: rgb(40, 95, 156);
+}
+
+.back-button{
+    width: 210px;
+    height: 50px;
+    border-radius: 10px;
+    background-color: rgb(0, 182, 180);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    bottom: 80px;
+    left: 620px;
+    top: 50px;
+    transform: translateX(-50%);
+    margin-bottom: 100px;
+    border: 0.2rem solid rgb(231, 233, 235);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.fa-solid {
+    color: azure;
+    font-size: 26px;
+    display: flex;
+    align-items: center;
+}
+.fa-solid span {
+    margin: 10px;
+}
+
+
+/* Estilos para pantallas pequeñas */
+@media screen and (max-width: 768px) {
+
+    #root {
+        height: 100%;
+    }
+
+    .container-first {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 0px;
+        margin: auto;
+
+    }
+
+    /* Define el estilo para las tarjetas */
+    .btn-first-option{
+        width: 150px;
+        height: 150px;
+        padding: 0px;
+    }
+    .card-first h2{
+        font-size: 20px;
+        padding: 10;
+        margin: 0.4;
+    }
+    .btn-first-option p {
+        font-size: 16px;
+    }
+    .btn-first-option:first-of-type {
+        margin-top: 10rem;
+    }
+
+   /*  .my-link:last-of-type {
+        margin-bottom: 10rem;
+    } */
+
+    .container-first h1 {
+        top: 6rem;
+        font-size: 16px;
+
+    }
+    .fa-solid {
+        font-size: 18px;
+    }
+    .back-button {
+        width: 150px;
+        height: 40px;
+        bottom: 40px;
+        left: 74px;
+        top: 20px;
+        transform: translateX(-50%);
+    }
+}
+/* Estilos para pantallas medianas */
+@media screen and (min-width: 768px) and (max-width: 1025px) {
+    .container-first {
+        margin-top: 10rem;
+        margin-left: 2rem;
+    }
+
+    .card-first {
+        width: 10rem;
+        height: 10rem;
+    }
+    .card-first h2 {
+        font-size: 20px;
+    }
+    .card-first p {
+        font-size: 16px;
+    }
+    .button-circle {
+        position: relative;
+        bottom: 80px;
+        left: 500px;
+        top: 50px;
+        transform: translateX(-50%);
+        margin-bottom: 100px;
+    }
+    .button-circle {
+        width: 180px;
+        height: 40px;
+    }
+    .fa-solid {
+        font-size: 18px;
+    }
+}

@@ -1,0 +1,173 @@
+.container {
+    position: relative;
+    text-align: center;
+  }
+  .container-month {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    margin-left: 80px;
+    margin-top: 40px;
+  }
+  
+  .month-one, .month-two, .month-three, .month-four {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 60px;
+    border-radius: 12px;
+    background-color: #dbdbdb;
+    cursor: pointer;
+  }
+  .selected{
+    background-color: #004A72;
+  }
+  .month-one, .month-two, .month-three, .month-four p {
+    color: rgb(251, 253, 253);
+    font-size: 26px;
+    font-weight: bold;
+    /* display: flex; */
+  }
+  .summary {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 80px;
+    left: 50px;
+    width: 25%;
+    height: 40px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #00b6b9;
+  }
+  .summary span{
+    margin-right: 16px;
+  }
+  .lecciones {
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    top: 120px;
+    left: 80px;
+    width: 40%;
+    height: 40px;
+    font-size: 22px;
+    color: #1d5696;
+  }
+  .lecciones p{
+    margin-right: 10px;
+  }
+ 
+  /* Estilos para pantallas pequeñas */
+  @media screen and (max-width: 768px) {
+    .container-month {
+      margin-left: 14px;
+      gap: 1px;
+
+    }
+    .month-one, .month-two, .month-three, .month-four {
+      width: 80px;
+      height: 35px;
+      border-radius: 12px;
+      background-color: #dbdbdb;
+      cursor: pointer;
+    }
+    .month-one, .month-two, .month-three, .month-four p {
+      color: rgb(251, 253, 253);
+      font-size: 13px;
+      font-weight: bold;
+    }
+    .summary {
+      top: 40px;
+      left: 100px;
+      width: 50%;
+      height: 40px;
+      font-size: 16px;
+    }
+    .selected{
+      background-color: #004A72;
+    }
+    .lecciones {
+      top: 70px;
+      /* left: 20px; */
+      width: 65%;
+      height: 40px;
+      font-size: 10px;
+      color: #1d5696;
+    }
+
+}
+  
+  /* Estilos para pantallas medianas */
+  @media screen and (min-width: 768px) and (max-width: 1025px) {
+    .container-month {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 40px;
+      margin-left: 40px;
+      margin-top: 40px;
+    }
+    .month-one, .month-two, .month-three, .month-four {
+      display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 160px;
+    height: 50px;
+    border-radius: 12px;
+    background-color: #004A72;
+    cursor: pointer;
+    }
+    .month-two {
+      left: 12rem;
+      background-color: #dbdbdb;
+    }
+    .month-three {
+      left: 26rem;
+      background-color: #dbdbdb;
+    }
+    .month-four{
+      left: 42rem;
+      background-color: #dbdbdb;
+    }
+    .month-one, .month-two, .month-three, .month-four p {
+      font-size: 22px;
+    }
+    .summary {
+      left: 66px;
+      font-size: 22px;
+    }
+    .summary span{
+      margin-right: 16px;
+    }
+    .button-circle-back {
+      left: 600px;
+      width: 140px;
+      height: 40px;
+  }
+  .button-circle-back {
+    right: 200px;
+}
+  .button-circle-next {
+      left: 840px;
+      width: 210px;
+      height: 40px;
+  }
+  .button-circle-next {
+      position: absolute;
+      bottom: 80px;
+      right: -70px;
+  }
+  
+    .back-button-day {
+      font-size: 20px;
+    }
+    .next-button {
+      font-size: 18px;
+    }
+    .lecciones {
+      font-size: 16px;
+    }
+  }

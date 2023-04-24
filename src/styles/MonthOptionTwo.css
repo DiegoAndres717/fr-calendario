@@ -1,0 +1,154 @@
+.container-second {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 10rem;
+    margin-left: 14rem;
+    width: 900px;
+}
+.container-second .btn-second-option{
+    width: 200px;
+    height: 200px;
+    margin: 30px;
+}
+
+.btn-second-option {
+    border: 3px solid rgb(40, 95, 156);
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+    cursor: pointer;
+    padding: 10px;
+    box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.25);
+}
+.card-second {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.card-second h2 {
+    color: rgb(0, 183, 181);
+    font-size: 22px;
+    font-weight: bold;
+    text-transform: capitalize;
+    padding: 10px;
+}
+
+.card-second p {
+    color: rgb(40, 95, 156);
+    font-size: 20px;
+    text-align: center;
+    margin: 0;
+}
+
+.container-second h1 {
+    position: absolute;
+    top: 130px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 24px;
+    font-weight: bolder;
+    color: rgb(40, 95, 156);
+}
+
+.container-second .back-button {
+    position: relative;
+    bottom: 80px;
+    left: 430px;
+    top: 50px;
+    transform: translateX(-50%);
+    margin-bottom: 100px;
+}
+
+/* Estilos para pantallas pequeñas */
+@media screen and (max-width: 768px) {
+
+    #root {
+        height: 100%;
+    }
+
+    .container-second {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 200px;
+        margin: auto;
+
+    }
+
+    /* Define el estilo para las tarjetas */
+    .btn-second-option{
+        width: 150px;
+        height: 150px;
+    }
+    h2{
+        font-size: 20px;
+    }
+    .card-second p {
+        font-size: 16px;
+    }
+    .btn-second-option:first-of-type {
+        margin-top: 10rem;
+    }
+    .container-second .my-link:first-of-type {
+        margin-top: 10rem;
+    }
+
+   /*  .my-link:last-of-type {
+        margin-bottom: 10rem;
+    } */
+
+    .container-second .my-link {
+        height: 200px;
+    }
+
+    .container-second h1 {
+        top: 6rem;
+        font-size: 16px;
+
+    }
+
+    .container-second .back-button {
+        width: 150px;
+        height: 40px;
+        bottom: 100px;
+        left: 76px;
+        top: 40px;
+        transform: translateX(-50%);
+    }
+}
+/* Estilos para pantallas medianas */
+@media screen and (min-width: 768px) and (max-width: 1025px) {
+    .container-second {
+        margin-top: 10rem;
+        margin-left: 4rem;
+    }
+
+    .card-second {
+        width: 10rem;
+        height: 10rem;
+    }
+    .card-second h2 {
+        font-size: 20px;
+    }
+    .card-second p {
+        font-size: 16px;
+    }
+    .button-circle {
+        position: relative;
+        bottom: 80px;
+        left: 500px;
+        top: 50px;
+        transform: translateX(-50%);
+        margin-bottom: 100px;
+    }
+    .button-circle {
+        width: 180px;
+        height: 40px;
+    }
+    .fa-solid {
+        font-size: 18px;
+    }
+}

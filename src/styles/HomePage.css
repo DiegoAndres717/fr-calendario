@@ -1,0 +1,108 @@
+.container-home {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 10rem;
+    margin-left: 14rem;
+    width: 900px;
+}
+
+.btn-home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    width: 100%;
+    max-width: 14rem;
+    height: 14rem;
+    border: 0.2rem solid rgb(40, 95, 156);
+    border-radius: 1rem;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0.2rem 0.5rem 0.5rem rgba(0, 0, 0, 0.25);
+}
+
+/* Define el estilo para las tarjetas */
+
+.card p {
+    color: rgb(40, 95, 156);
+    font-size: 1.4rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+h1 {
+    position: absolute;
+    top: 9rem;
+    left: 50%;
+    text-align: center;
+    transform: translateX(-50%);
+    font-size: 1.4rem;
+    font-weight: bolder;
+    color: rgb(40, 95, 156);
+}
+
+.imagen-publica img {
+    width: 28rem;
+    height: 24rem;
+    margin-left: 55rem;
+    display: block;
+    margin-top: -10rem;
+}
+
+
+/* Estilos para pantallas pequeñas */
+@media screen and (max-width: 768px) {
+
+    #root {
+        height: 100%;
+    }
+
+    .container-home {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 200px;
+        margin: auto;
+
+    }
+    .btn-home:first-of-type {
+        margin-top: 10rem;
+    }
+
+
+    /* Define el estilo para las tarjetas */
+    .btn-home {
+        width: 250px;
+        margin-bottom: 30px;
+    }
+
+
+    h1 {
+        top: 5rem;
+        font-size: 16px;
+
+    }
+
+    .imagen-publica img {
+        display: none;
+    }
+}
+
+/* Estilos para pantallas medianas */
+@media screen and (min-width: 768px) and (max-width: 1025px) {
+    .container-home {
+        margin-top: 14rem;
+        margin-left: 2rem;
+    }
+
+    .imagen-publica img {
+        width: 22rem;
+        height: 20rem;
+        margin-left: 41rem;
+        margin-top: -1rem;
+    }
+}
