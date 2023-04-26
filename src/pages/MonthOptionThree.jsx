@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../styles/MonthOptionThree.css";
 import { useLocalStorageFirst } from "../functions/useLocalStorage";
-import DayViewTwo from "./DayViewTwo";
+import DayView from "./DayView";
 
 const MonthOptionThree = ({ setMonthSelection }) => {
   const [currentMonth, setCurrentMonth] = useLocalStorageFirst(
@@ -9,7 +9,7 @@ const MonthOptionThree = ({ setMonthSelection }) => {
     ""
   );
   const [selectedMonth, setSelectedMonth] = useState(1);
-  const [isActive, setIsActive] = useState(true);
+  const [selectedThree, setSelectedThree] = useState(true)
   const months = [
     "mes-1",
     "mes-2",
@@ -24,7 +24,15 @@ const MonthOptionThree = ({ setMonthSelection }) => {
     "mes-11",
   ];
   if (months.includes(currentMonth)) {
-    return <DayViewTwo isActive={isActive} setCurrentMonth={setCurrentMonth} currentMonth={currentMonth} setSelectedMonth={setSelectedMonth} selectedMonth={selectedMonth} />;
+    return (
+      <DayView
+        selectedThree={selectedThree}
+        setCurrentMonth={setCurrentMonth}
+        currentMonth={currentMonth}
+        setSelectedMonth={setSelectedMonth}
+        selectedMonth={selectedMonth}
+      />
+    );
   }
   const handleMonthClick = (index) => {
     setSelectedMonth(index + 1);
