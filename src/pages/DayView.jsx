@@ -1,35 +1,22 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import Dias from "../components/Dias";
-import "../styles/DayView.css";
+import "../styles/DayViewTwo.css";
 import ProgressBar from "../components/ProgressBar";
 import Spinner from "../components/Spinner";
 import data from "../../data/api.json";
 
-const DayView = ({
-  setCurrentMonth,
-  setSelectedMonth,
-  selectedMonth,
-  currentMonth,
-}) => {
+const DayView = ({ setCurrentMonth, selectedMonth, setSelectedMonth, selectedOne, selectedTwo, selectedThree }) => {
   const [selectedBoxes, setSelectedBoxes] = useState([]);
   const [progress, setProgress] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
-  const [lecciones, setLecciones] = useState(data.cursos[0].lecciones);
+  const [lecciones, setLecciones] = useState([]);
+  let maxMonth = selectedOne ? 4 : selectedTwo ? 6 : selectedThree ? 11 : null;
 
   useEffect(() => {
-    setLecciones(data.cursos[0].lecciones);
+    setIsLoading(true);
+    setLecciones(data.cursos[selectedMonth - 1].lecciones);
     setIsLoading(false);
-
-    if (currentMonth === "mes-1") {
-      setSelectedMonth(1);
-    } else if (currentMonth === "mes-2") {
-      setSelectedMonth(2);
-    } else if (currentMonth === "mes-3") {
-      setSelectedMonth(3);
-    } else if (currentMonth === "mes-4") {
-      setSelectedMonth(4);
-    }
-  }, [data.cursos, currentMonth]);
+  }, [data.cursos, selectedMonth]);
 
   const handleBoxClick = useCallback(
     (index) => {
@@ -54,66 +41,88 @@ const DayView = ({
 
   const progressPercentage = Math.round((progress / totalTemas) * 100);
 
-  const handleClickMonth = (month) => {
-    const courseIndex = month - 1;
-    const selectedCourse = data.cursos[courseIndex];
-    setLecciones(selectedCourse.lecciones);
-    setSelectedMonth(month);
+  const handleNextMonthClick = () => {
+    setSelectedMonth((selectedMonth) => {
+      if (selectedMonth === maxMonth) {
+        return maxMonth;
+      } else {
+        const nextMonth = selectedMonth + 1;
+        setSelectedMonth(
+          nextMonth - 1 
+        );
+        return nextMonth;
+      }
+    });
   };
-  
+
+  const handlePrevMonthClick = () => {
+    setSelectedMonth((selectedMonth) => {
+      if (selectedMonth === 1) {
+        return 1;
+      } else {
+        const prevMonth = selectedMonth - 1;
+        setSelectedMonth(
+          prevMonth - 1 
+        );
+        return prevMonth;
+      }
+    });
+  };
+
   return (
     <>
       {isLoading ? (
         <Spinner />
       ) : (
         <div className="content">
-          <div className="container">
-            <div className="container-month">
-              <div
-                className={`month-one ${selectedMonth === 1 ? "selected" : ""}`}
-                onClick={() => handleClickMonth(1)}
-              >
-                <p>Mes 1 de 4</p>
+          <div className="container-two">
+            <div
+              className={`container-month-two ${
+                selectedMonth === 1 ? "selected-container" : ""
+              }`}
+            >
+              {selectedMonth !== 1 ? (
+                <button
+                  className="day-month-one"
+                  onClick={handlePrevMonthClick}
+                  disabled={selectedMonth === 0}
+                >
+                  {selectedMonth > 1 ? `Ir a mes ${selectedMonth - 1}` : null}
+                </button>
+              ) : null}
+              <div className={`day-month-two`}>
+                <p>Mes {selectedMonth}</p>
               </div>
-              <div
-                className={`month-two ${selectedMonth === 2 ? "selected" : ""}`}
-                onClick={() => handleClickMonth(2)}
-              >
-                <p>Mes 2 de 4</p>
-              </div>
-              <div
-                className={`month-three ${
-                  selectedMonth === 3 ? "selected" : ""
-                }`}
-                onClick={() => handleClickMonth(3)}
-              >
-                <p>Mes 3 de 4</p>
-              </div>
-              <div
-                className={`month-four ${
-                  selectedMonth === 4 ? "selected" : ""
-                }`}
-                onClick={() => handleClickMonth(4)}
-              >
-                <p>Mes 4 de 4</p>
-              </div>
+              {selectedMonth !== maxMonth ? (
+                <button
+                  className="day-month-three"
+                  onClick={handleNextMonthClick}
+                  disabled={selectedMonth === maxMonth}
+                >
+                  Ir a mes {selectedMonth + 1}
+                </button>
+              ) : null}
             </div>
-            <div className="summary">
+            <div className="day-summary">
               <span>Resumen del mes</span>
-              <p>1</p>
+              <p>{selectedMonth}</p>
             </div>
-            <div className="lecciones">
+            <div className="day-lecciones">
               <p>233 lecciones</p>
               <p>20 dias de estudio</p>
               <p>67 h 32 min</p>
             </div>
           </div>
-          <ProgressBar progressPercentage={progressPercentage} />
+          <ProgressBar
+            progressPercentage={progressPercentage}
+            selectedMonth={selectedMonth}
+          />
           <Dias
             lecciones={lecciones}
             selectedBoxes={selectedBoxes}
-            handleBoxClick={handleBoxClick}
+            selectedMonth={selectedMonth}
             setCurrentMonth={setCurrentMonth}
+            handleBoxClick={handleBoxClick}
           />
         </div>
       )}

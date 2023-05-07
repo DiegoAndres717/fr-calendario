@@ -5,13 +5,13 @@ import ProgressBar from "../components/ProgressBar";
 import Spinner from "../components/Spinner";
 import data from "../../data/api.json";
 
-const DayView = ({ setCurrentMonth, selectedMonth, setSelectedMonth }) => {
+const DayViewTwo = ({ setCurrentMonth, selectedMonth, setSelectedMonth, selectedOne, selectedTwo, selectedThree }) => {
   const [selectedBoxes, setSelectedBoxes] = useState([]);
   const [progress, setProgress] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [lecciones, setLecciones] = useState([]);
   const [currentCursoIndex, setCurrentCursoIndex] = useState(0);
-  const maxMonth = 6;
+  let maxMonth = selectedOne ? 4 : selectedTwo ? 6 : selectedThree ? 11 : null;
 
   useEffect(() => {
     setIsLoading(true);
@@ -49,7 +49,7 @@ const DayView = ({ setCurrentMonth, selectedMonth, setSelectedMonth }) => {
       } else {
         const nextMonth = selectedMonth + 1;
         setCurrentCursoIndex(
-          nextMonth - 1 // Los índices del array empiezan en 0, los meses en 1
+          nextMonth - 1 
         );
         return nextMonth;
       }
@@ -63,7 +63,7 @@ const DayView = ({ setCurrentMonth, selectedMonth, setSelectedMonth }) => {
       } else {
         const prevMonth = selectedMonth - 1;
         setCurrentCursoIndex(
-          prevMonth - 1 // Los índices del array empiezan en 0, los meses en 1
+          prevMonth - 1 
         );
         return prevMonth;
       }
@@ -131,4 +131,4 @@ const DayView = ({ setCurrentMonth, selectedMonth, setSelectedMonth }) => {
   );
 };
 
-export default DayView;
+export default DayViewTwo;

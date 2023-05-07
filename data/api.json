@@ -4,6 +4,7 @@
       "nombre": "Curso 1",
       "lecciones": [
         {
+          "id": 1,
           "nombre": "Leccion 1",
           "dia": "Dia 1",
           "url": "/url-de-leccion",
@@ -683,6 +684,7 @@
 
       "lecciones": [
         {
+          "id": 2,
           "nombre": "Leccion 1",
           "dia": "Dia 1",
           "url": "/url-de-leccion",
@@ -1362,6 +1364,7 @@
 
       "lecciones": [
         {
+          "id":3,
           "nombre": "Leccion 1",
           "dia": "Dia 1",
           "url": "/url-de-leccion",
@@ -2041,6 +2044,7 @@
 
       "lecciones": [
         {
+          "id":4,
           "nombre": "Leccion 1",
           "dia": "Dia 1",
           "url": "/url-de-leccion",
@@ -2720,6 +2724,7 @@
 
       "lecciones": [
         {
+          "id":5,
           "nombre": "Leccion 1",
           "dia": "Dia 1",
           "url": "/url-de-leccion",
@@ -3399,6 +3404,7 @@
 
       "lecciones": [
         {
+          "id":6,
           "nombre": "Leccion 1",
           "dia": "Dia 1",
           "url": "/url-de-leccion",

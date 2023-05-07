@@ -17,15 +17,15 @@
     width: 200px;
     height: 60px;
     border-radius: 12px;
-    background-color: #dbdbdb;
+    background-color: #00b6b9;
     cursor: pointer;
     border: 0;
   }
   .day-month-three:focus {
-    background-color: #c4c2c2;
+    background-color: #04a7aa;
   }
   .day-month-one:focus {
-    background-color: #c4c2c2;
+    background-color: #04a7aa;
   }
   .selected-container {
     display: grid;

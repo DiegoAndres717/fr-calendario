@@ -1,62 +1,74 @@
 import React, { useState } from "react";
 import "../styles/MonthOptionOne.css";
-import DayView from "./DayView";
 import { useLocalStorageFirst } from "../functions/useLocalStorage";
+import DayView from "./DayView";
 
 const MonthOptionOne = ({ setMonthSelection }) => {
   const [currentMonth, setCurrentMonth] = useLocalStorageFirst(
     "currentMonth",
     ""
   );
-  const [selectedMonth, setSelectedMonth] = useState(0)
+  const [selectedMonth, setSelectedMonth] = useState(1);
+  const [selectedOne, setSelectedOne] = useState(true);
+  const months = ["mes-1", "mes-2", "mes-3", "mes-4"];
 
-  const monthOptions = {
-    "mes-1": <DayView setCurrentMonth={setCurrentMonth} currentMonth={currentMonth} selectedMonth={selectedMonth} setSelectedMonth={setSelectedMonth}/>,
-    "mes-2": <DayView setCurrentMonth={setCurrentMonth}  currentMonth={currentMonth} selectedMonth={selectedMonth} setSelectedMonth={setSelectedMonth}/>,
-    "mes-3": <DayView setCurrentMonth={setCurrentMonth}  currentMonth={currentMonth} selectedMonth={selectedMonth} setSelectedMonth={setSelectedMonth}/>,
-    "mes-4": <DayView setCurrentMonth={setCurrentMonth}  currentMonth={currentMonth} selectedMonth={selectedMonth} setSelectedMonth={setSelectedMonth}/>,
-  };
   const handleBackButtonClick = () => {
     setMonthSelection("");
     return;
   };
 
+  const handleMonthClick = (index) => {
+    setSelectedMonth(index + 1);
+    setCurrentMonth(`mes-${index + 1}`);
+  };
+
+  if (months.includes(currentMonth)) {
+    return (
+      <DayView
+        selectedOne={selectedOne}
+        setCurrentMonth={setCurrentMonth}
+        currentMonth={currentMonth}
+        setSelectedMonth={setSelectedMonth}
+        selectedMonth={selectedMonth}
+      />
+    );
+  }
+
   return (
-    monthOptions[currentMonth] ? monthOptions[currentMonth] : (
-      <>
-        <div className="container-first">
-          <h1>Selecciona el mes que estás estudiando actualmente</h1>
-          {cards.map((card, index) => (
-            <button
-              className={card.classLink}
-              key={index}
-              onClick={() => setCurrentMonth(`mes-${index + 1}`)}
-            >
-              <div className={card.claseDiv}>
-                <h2>{card.title}</h2>
-                <p>{card.text}</p>
-                <p>{card.text2}</p>
-                <p>{card.text3}</p>
-              </div>
-            </button>
-          ))}
-          <button className="back-button" onClick={handleBackButtonClick}>
-            <i className="fa-solid fa-circle-chevron-left">
-              <span>Regresar</span>
-            </i>
+    <>
+      <div className="container-first">
+        <h1>Selecciona el mes que estás estudiando actualmente</h1>
+        {cards.map((card, index) => (
+          <button
+            className={card.classLink}
+            key={index}
+            onClick={() => handleMonthClick(index)}
+          >
+            <div className={card.claseDiv}>
+              <h2>{card.title}</h2>
+              <p>{card.text}</p>
+              <p>{card.text2}</p>
+              <p>{card.text3}</p>
+            </div>
           </button>
-        </div>
-      </>
-    )
+        ))}
+        <button className="back-button" onClick={handleBackButtonClick}>
+          <i className="fa-solid fa-circle-chevron-left">
+            <span>Regresar</span>
+          </i>
+        </button>
+      </div>
+    </>
   );
 };
+
 const cards = [];
-cards.push({
-  classLink: "btn-first-option",
-  claseDiv: "card-first",
-  title: "Mes 1",
-  text: "15 lecciones",
-  text2: "20 dias de estudio",
+  cards.push({
+    classLink: "btn-first-option",
+    claseDiv: "card-first",
+    title: "Mes 1",
+    text: "15 lecciones",
+    text2: "20 dias de estudio",
   text3: "20 horas",
 });
 cards.push({

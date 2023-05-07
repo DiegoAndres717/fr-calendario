@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../styles/MonthOptionTwo.css";
 import { useLocalStorageFirst } from "../functions/useLocalStorage";
-import DayViewTwo from "./DayViewTwo";
+import DayView from "./DayView";
 
 const MonthOptionTwo = ({ setMonthSelection }) => {
   const [currentMonth, setCurrentMonth] = useLocalStorageFirst(
@@ -9,9 +9,10 @@ const MonthOptionTwo = ({ setMonthSelection }) => {
     ""
   );
   const [selectedMonth, setSelectedMonth] = useState(1)
+  const [selectedTwo, setSelectedTwo] = useState(true)
   const months = ["mes-1", "mes-2", "mes-3", "mes-4", "mes-5", "mes-6"];
   if (months.includes(currentMonth)) {
-    return <DayViewTwo setCurrentMonth={setCurrentMonth} currentMonth={currentMonth} setSelectedMonth={setSelectedMonth} selectedMonth={selectedMonth}/>;
+    return <DayView selectedTwo={selectedTwo} setCurrentMonth={setCurrentMonth} currentMonth={currentMonth} setSelectedMonth={setSelectedMonth} selectedMonth={selectedMonth}/>;
   }
   const handleBackButtonClick = () => {
     setMonthSelection("");
@@ -22,15 +23,6 @@ const MonthOptionTwo = ({ setMonthSelection }) => {
     setCurrentMonth(`mes-${index + 1}`);
   };
 
-  if (months.includes(currentMonth)) {
-    return (
-      <DayViewTwo
-        setCurrentMonth={setCurrentMonth}
-        currentMonth={currentMonth}
-        selectedMonth={selectedMonth}
-      />
-    );
-  }
   return (
     <>
       <div className="container-second">
